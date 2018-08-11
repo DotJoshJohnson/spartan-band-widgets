@@ -1,6 +1,7 @@
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 
+import { GoogleCalendarEvent } from "./google-calendar-event.interface";
 import { GoogleCalendarEventList } from "./google-calendar-event-list.interface";
 import { GoogleCalendarService } from "./google-calendar.service";
 
@@ -8,7 +9,7 @@ import { GoogleCalendarService } from "./google-calendar.service";
     selector: "lsd-google-calendar-widget",
     templateUrl: "./google-calendar-widget.component.html",
     styleUrls: ["./google-calendar-widget.component.scss"],
-    encapsulation: ViewEncapsulation.ShadowDom
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class GoogleCalendarWidgetComponent implements OnInit {
 
@@ -17,7 +18,7 @@ export class GoogleCalendarWidgetComponent implements OnInit {
         private _googleCalendar: GoogleCalendarService
     ) { }
 
-    @Input()
+    @Input("calendar-id")
     calendarId: string | undefined;
 
     eventList: GoogleCalendarEventList | undefined;
@@ -25,7 +26,11 @@ export class GoogleCalendarWidgetComponent implements OnInit {
     @Input()
     href = "#";
 
-    ngOnInit(): void {
+    getStartDate(event: GoogleCalendarEvent): Date {
+        return event.start.date || event.start.dateTime;
+    }
+
+    async ngOnInit(): Promise<void> {
         this.refresh();
     }
 

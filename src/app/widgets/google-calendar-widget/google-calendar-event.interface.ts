@@ -7,6 +7,6 @@ export interface GoogleCalendarEvent {
     summary: string;
     description: string;
     location: string;
-    start: { dateTime: Date };
-    end: { dateTime: Date };
+    start: { date: Date, dateTime: Date };
+    end: { date: Date, dateTime: Date };
 }

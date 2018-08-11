@@ -15,6 +15,7 @@
         padding: 20px;
 
         .title {
+            box-shadow: none;
             color: #000000;
             font-size: 20px;
             text-decoration: none;
@@ -23,19 +24,36 @@
 
     .events-container {
         background-color: #FFFFFF;
+        height: 600px;
         overflow-y: auto;
 
         .event {
             padding: 20px;
 
             .event-title {
+                box-shadow: none;
                 color: #006838;
                 font-size: 1.2em;
                 text-decoration: none;
             }
 
-            .event-location, .event-time {
+            .event-location, .event-time, .event-description {
                 color: #777777;
+            }
+
+            p {
+                margin: 0;
+                margin-bottom: 3px;
+            }
+        }
+
+        .event:hover {
+            .event-title {
+                font-weight: bold;
+            }
+
+            .event-location, .event-time, .event-description {
+                color: #000000;
             }
         }
 

@@ -1,24 +1,26 @@
+import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
 import { Injector, NgModule } from "@angular/core";
 import { createCustomElement } from "@angular/elements";
 import { BrowserModule } from "@angular/platform-browser";
 
-import { AppComponent } from "./app.component";
 import { GoogleCalendarWidgetComponent } from "./widgets/google-calendar-widget/google-calendar-widget.component";
+import { SortByDatePipe } from "./widgets/google-calendar-widget/sort-by-date.pipe";
 
 @NgModule({
     declarations: [
-        AppComponent,
-        GoogleCalendarWidgetComponent
+        GoogleCalendarWidgetComponent,
+        SortByDatePipe
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        CommonModule,
+        HttpClientModule
     ],
     providers: [],
-    bootstrap: [
-        AppComponent,
+    entryComponents: [
         GoogleCalendarWidgetComponent
-    ],
-    entryComponents: [GoogleCalendarWidgetComponent]
+    ]
 })
 export class AppModule {
 

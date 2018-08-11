@@ -10,18 +10,20 @@
     <div class="events-container">
 
         <div *ngFor="let event of eventList.items" class="event">
-            <a class="event-title" [href]="event.htmlLink">{{event.summary}}</a>
-            <p class="event-time">
+            <a class="event-title" [href]="event.htmlLink" target="_blank">{{event.summary}}</a>
+            <p *ngIf="event.start.date" class="event-time">
                 <i class="material-icons">access_time</i>
-                {{event.start.dateTime}}
+                {{event.start.date | date:"EEEE, MMMM d, yyyy"}}
             </p>
-            <p class="event-location">
+            <p *ngIf="event.start.dateTime" class="event-time">
+                <i class="material-icons">access_time</i>
+                {{event.start.dateTime | date:"EEEE, MMMM d, yyyy 'at' h:mm a"}}
+            </p>
+            <p *ngIf="event.location" class="event-location">
                 <i class="material-icons">location_on</i>
                 {{event.location}}
             </p>
-            <p class="event-description">
-                {{trustHtml(event.description)}}
-            </p>
+            <p *ngIf="event.description" class="event-description" [innerHTML]="trustHtml(event.description)"></p>
         </div>
 
     </div>
