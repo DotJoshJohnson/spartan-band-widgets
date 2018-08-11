@@ -1,3 +1,29 @@
-<p>
-  google-calendar-widget works!
-</p>
+<div *ngIf="eventList" class="container">
+
+    <div class="header">
+        <a class="title" [href]="href" target="_blank">
+            <i class="material-icons">calendar_today</i>
+            {{eventList.summary}}
+        </a>
+    </div>
+
+    <div class="events-container">
+
+        <div *ngFor="let event of eventList.items" class="event">
+            <a class="event-title" [href]="event.htmlLink">{{event.summary}}</a>
+            <p class="event-time">
+                <i class="material-icons">access_time</i>
+                {{event.start.dateTime}}
+            </p>
+            <p class="event-location">
+                <i class="material-icons">location_on</i>
+                {{event.location}}
+            </p>
+            <p class="event-description">
+                {{trustHtml(event.description)}}
+            </p>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,46 @@
+.container .material-icons {
+    font-size: 1em;
+}
+
+.container {
+    background-color: #DBDEE1;
+    border: 1px solid #DBDEE1;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    padding: 0;
+
+    .header {
+        border-bottom: 1px solid #DBDEE1;
+        padding: 20px;
+
+        .title {
+            color: #000000;
+            font-size: 20px;
+            text-decoration: none;
+        }
+    }
+
+    .events-container {
+        background-color: #FFFFFF;
+        overflow-y: auto;
+
+        .event {
+            padding: 20px;
+
+            .event-title {
+                color: #006838;
+                font-size: 1.2em;
+                text-decoration: none;
+            }
+
+            .event-location, .event-time {
+                color: #777777;
+            }
+        }
+
+        .event:not(:last-child) {
+            border-bottom: 1px dashed #DBDEE1;
+        }
+    }
+}
