@@ -5,12 +5,12 @@ import { createCustomElement } from "@angular/elements";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { GoogleCalendarWidgetComponent } from "./widgets/google-calendar-widget/google-calendar-widget.component";
-import { SortByDatePipe } from "./widgets/google-calendar-widget/sort-by-date.pipe";
+import { SearchableFormsWidgetComponent } from "./widgets/searchable-forms-widget/searchable-forms-widget.component";
 
 @NgModule({
     declarations: [
         GoogleCalendarWidgetComponent,
-        SortByDatePipe
+        SearchableFormsWidgetComponent
     ],
     imports: [
         BrowserModule,
@@ -19,15 +19,18 @@ import { SortByDatePipe } from "./widgets/google-calendar-widget/sort-by-date.pi
     ],
     providers: [],
     entryComponents: [
-        GoogleCalendarWidgetComponent
+        GoogleCalendarWidgetComponent,
+        SearchableFormsWidgetComponent
     ]
 })
 export class AppModule {
 
     constructor(public injector: Injector) {
         const googleCalendarWidget = createCustomElement(GoogleCalendarWidgetComponent, { injector });
+        const searchableFormsWidget = createCustomElement(SearchableFormsWidgetComponent, { injector });
 
         customElements.define("lsd-google-calendar", googleCalendarWidget);
+        customElements.define("lsd-searchable-forms", searchableFormsWidget);
     }
 
     // required by convention for Angular Elements
