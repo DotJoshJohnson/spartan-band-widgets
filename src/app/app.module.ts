@@ -3,9 +3,11 @@ import { HttpClientModule } from "@angular/common/http";
 import { Injector, NgModule } from "@angular/core";
 import { createCustomElement } from "@angular/elements";
 import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { GoogleCalendarWidgetComponent } from "./widgets/google-calendar-widget/google-calendar-widget.component";
 import { SearchableFormsWidgetComponent } from "./widgets/searchable-forms-widget/searchable-forms-widget.component";
+
 
 @NgModule({
     declarations: [
@@ -14,6 +16,7 @@ import { SearchableFormsWidgetComponent } from "./widgets/searchable-forms-widge
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         CommonModule,
         HttpClientModule
     ],
