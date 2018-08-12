@@ -1,3 +1,18 @@
-<p>
-  searchable-forms-widget works!
-</p>
+<div class="container">
+
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Search" [(ngModel)]="query" />
+    </mat-form-field>
+
+    <mat-card *ngFor="let item of getFilteredMediaItems()">
+        <mat-card-title>
+            <div *ngIf="item.caption" [innerHTML]="trustHtml(item.caption.rendered)"></div>
+        </mat-card-title>
+        <mat-card-content>
+            <div *ngIf="item.description" [innerHTML]="trustHtml(item.description.rendered)"></div>
+        </mat-card-content>
+        <mat-card-actions>
+            <a mat-button [href]="item.source_url" target="_blank">VIEW</a>
+        </mat-card-actions>
+    </mat-card>
+</div>

@@ -4,7 +4,9 @@ import { map } from "rxjs/operators";
 
 import { WordpressMediaItem } from "./wordpress-media-item.interface";
 
-@Injectable()
+@Injectable({
+    providedIn: "root"
+})
 export class WordpressService {
 
     constructor(
