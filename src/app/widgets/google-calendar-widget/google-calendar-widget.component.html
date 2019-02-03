@@ -11,13 +11,19 @@
 
         <div *ngFor="let event of eventList.items" class="event">
             <a class="event-title" [href]="event.htmlLink" target="_blank">{{event.summary}}</a>
-            <p *ngIf="event.start.date" class="event-time">
+            <p *ngIf="event.start.date && !isMultiDay(event)" class="event-time">
                 <i class="material-icons">access_time</i>
                 {{event.start.date | date:"EEEE, MMMM d, yyyy"}}
             </p>
-            <p *ngIf="event.start.dateTime" class="event-time">
+            <p *ngIf="event.start.dateTime && !isMultiDay(event)" class="event-time">
                 <i class="material-icons">access_time</i>
                 {{event.start.dateTime | date:"EEEE, MMMM d, yyyy 'at' h:mm a"}}
+            </p>
+            <p *ngIf="isMultiDay(event)" class="event-time">
+                <i class="material-icons">access_time</i>
+                {{event.start.date | date:"EEEE, MMMM d, yyyy"}}
+                &mdash;
+                {{getInclusiveEndDate(event) | date:"EEEE, MMMM d, yyyy"}}
             </p>
             <p *ngIf="event.location" class="event-location">
                 <i class="material-icons">location_on</i>

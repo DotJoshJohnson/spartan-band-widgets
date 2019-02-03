@@ -26,8 +26,25 @@ export class GoogleCalendarWidgetComponent implements OnInit {
     @Input()
     href = "#";
 
+    getInclusiveEndDate(event: GoogleCalendarEvent): Date {
+        return new Date(event.end.date || event.end.dateTime);
+    }
+
     getStartDate(event: GoogleCalendarEvent): Date {
         return event.start.date || event.start.dateTime;
+    }
+
+    isMultiDay(event: GoogleCalendarEvent): boolean {
+        if (!event.start.date || !event.end.date) {
+            return false;
+        }
+
+        const start = new Date(event.start.date);
+        const end = new Date(event.end.date);
+
+        const multiDay = (start.getDate() !== (end.getDate() - 1));
+
+        return multiDay;
     }
 
     async ngOnInit(): Promise<void> {
